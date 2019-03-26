@@ -1,239 +1,244 @@
 ---
-title: API Reference
+title: Quote Widget API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - html
+  - http
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+# toc_footers:
+#   - <a href='#'>Sign Up for a Developer Key</a>
+#   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - errors
+# includes:
+#   - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Quote Widget documentation!
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Get Started
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+> For the most basic usage:
 
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```html
+<html>
+  <body>
+    <script src="https://embed.hellobestow.com/static/js/embedded-quote.js" />
+  </body>
+</html>
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+```http
+https://embed.hellobestow.com/
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+The Quote widget is usable in two ways:
+
+1. You can inject a script tag directly into your website and use customization data parameters (html). All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`.
+2. Alternatively, you can direct users to a link and provide customization query parameters (http).
+
+Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
+
+# Customization
+
+## Sizing (html only)
+
+> For sizing control:
+
+```html
+<html>
+  <body>
+    <div height="500" width="400">
+      <script src="https://embed.hellobestow.com/static/js/embedded-quote.js" />
+    </div>
+  </body>
+</html>
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+```http
+<NOT APPLICABLE>
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+To determine the size of the embed, wrap the script in a container div and style the height and width.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+## Form Auto-fill
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+To auto-fill the quote form on-load, provide their associative data parameters.
 
-`Authorization: meowmeowmeow`
+| Parameter | Format                             | Description                                                                                  |
+| --------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| gender    | m / f initial                      | Gender formatted as initial.                                                                 |
+| dob       | yyyymmdd                           | Birthdate integer formatted in the order of year, month, day. No hyphens or slashes.         |
+| height    | integer                            | Calculate 12 \* number of feet + number of inches (filled on the form as 2 separate values). |
+| weight    | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                |
+| state     | state initials                     | Initials of the state of residence.                                                          |
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+> To auto-fill the form fields, provide any number of the following data parameters:
 
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```html
+<html>
+  <body>
+    <script
+      data-gender="m"
+      data-dob="19850101"
+      data-height="72"
+      data-weight="175"
+      data-state="TX"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+```http
+https://embed.hellobestow.com?gender=m&dob=19850101&height=72&weight=175&state=TX
 ```
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+## Skip Form
+
+If all information in the quote form is provided (refer to Form Auto-fill section), you can also opt to skip the form entirely and show your users their indicative quote info on-load.
+
+> To auto-fill and bypass the form, provide all form fields and the skipform parameter:
+
+```html
+<html>
+  <body>
+    <script
+      data-gender="m"
+      data-dob="19850101"
+      data-height="72"
+      data-weight="175"
+      data-state="TX"
+      data-skipform="true"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```http
+https://embed.hellobestow.com?gender=m&dob=19850101&height=72&weight=175&state=TX&skipform=true
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
+<!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
-</aside>
+</aside> -->
 
-## Get a Specific Kitten
+## Products
 
-```ruby
-require 'kittn'
+By default, all product terms are available to your users. But if you want to control your users' options on product term, simply provide a parameter for each product to make available.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+`data-products="BT1002"` - this means you want to exclude all other products besides `BT1002`
+
+| Product Code | Product Term |
+| ------------ | ------------ |
+| BT0201       | 2 Years      |
+| BT1002       | 10 Years     |
+| BT2002       | 20 Years     |
+
+> To restrict user available product terms to one product:
+
+```html
+<html>
+  <body>
+    <script
+      data-products="BT1002"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+```http
+https://embed.hellobestow.com?products=BT1002
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+> To restrict down to multiple product terms, just add another products parameter:
+
+```html
+<html>
+  <body>
+    <script
+      data-products="BT1002"
+      data-products="BT2002"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+```http
+https://embed.hellobestow.com?products=BT1002&products=BT2002
 ```
 
-> The above command returns JSON structured like this:
+## Default Coverage Amount
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+You can specify the default coverage amount selected on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.
+
+> To set a default coverage amount:
+
+```html
+<html>
+  <body>
+    <script
+      data-coverage="150000"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+```http
+https://embed.hellobestow.com?coverage=150000
 ```
 
-```python
-import kittn
+## Minimum Coverage Amount
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
+You can control user access to a minimum coverage amount selectable on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.
+
+> To set a minimum coverage amount:
+
+```html
+<html>
+  <body>
+    <script
+      data-mincoverage="150000"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+```http
+https://embed.hellobestow.com?mincoverage=150000
 ```
 
-```javascript
-const kittn = require('kittn');
+## Theme Modification (POC, not available yet)
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+You can modify some of the colors in the widget
+
+| Parameter | Format      | Description                                                             |
+| --------- | ----------- | ----------------------------------------------------------------------- |
+| bgcolor   | hexidecimal | Changes the color of the widget card background.                        |
+| fontcolor | hexidecimal | Changes the font color of components that use the theme's primary text. |
+
+> To modify the theme colors:
+
+```html
+<html>
+  <body>
+    <script
+      data-fontcolor="FFF000"
+      data-bgcolor="FF0000"
+      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+    />
+  </body>
+</html>
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
+```http
+https://embed.hellobestow.com?fontcolor=FFF000&bgcolor=FF0000
 ```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
