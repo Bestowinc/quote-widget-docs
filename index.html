@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Quote Widget API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;html&quot;,&quot;http&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="html">html</a>
+              <a href="#" data-language-name="http">http</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,279 +223,273 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#get-started" class="toc-h1 toc-link" data-title="Get Started">Get Started</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#customization" class="toc-h1 toc-link" data-title="Customization">Customization</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#sizing-html-only" class="toc-h2 toc-link" data-title="Sizing (html only)">Sizing (html only)</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#form-auto-fill" class="toc-h2 toc-link" data-title="Form Auto-fill">Form Auto-fill</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#skip-form" class="toc-h2 toc-link" data-title="Skip Form">Skip Form</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                  </li>
+                  <li>
+                    <a href="#default-coverage-amount" class="toc-h2 toc-link" data-title="Default Coverage Amount">Default Coverage Amount</a>
+                  </li>
+                  <li>
+                    <a href="#minimum-coverage-amount" class="toc-h2 toc-link" data-title="Minimum Coverage Amount">Minimum Coverage Amount</a>
+                  </li>
+                  <li>
+                    <a href="#theme-modification-poc-not-available-yet" class="toc-h2 toc-link" data-title="Theme Modification (POC, not available yet)">Theme Modification (POC, not available yet)</a>
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>Welcome to the Quote Widget documentation!</p>
+<h1 id='get-started'>Get Started</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>For the most basic usage:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span> <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com/
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>The Quote widget is usable in two ways:</p>
+
+<ol>
+<li>You can inject a script tag directly into your website and use customization data parameters (html). All parameters need to be prefixed with <code>data-</code>. For example, the <code>products</code> parameter should be <code>data-products</code>.</li>
+<li>Alternatively, you can direct users to a link and provide customization query parameters (http).</li>
+</ol>
+
+<p>Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.</p>
+<h1 id='customization'>Customization</h1><h2 id='sizing-html-only'>Sizing (html only)</h2>
+<blockquote>
+<p>For sizing control:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">width=</span><span class="s">"400"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span> <span class="nt">/&gt;</span><span class="err">
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
+</span></code></pre>
+<p>To determine the size of the embed, wrap the script in a container div and style the height and width.</p>
+<h2 id='form-auto-fill'>Form Auto-fill</h2>
+<p>To auto-fill the quote form on-load, provide their associative data parameters.</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>gender</td>
+<td>m / f initial</td>
+<td>Gender formatted as initial.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>dob</td>
+<td>yyyymmdd</td>
+<td>Birthdate integer formatted in the order of year, month, day. No hyphens or slashes.</td>
+</tr>
+<tr>
+<td>height</td>
+<td>integer</td>
+<td>Calculate 12 * number of feet + number of inches (filled on the form as 2 separate values).</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>floating number, one decimal point</td>
+<td>Weight in pounds (one decimal point allowed).</td>
+</tr>
+<tr>
+<td>state</td>
+<td>state initials</td>
+<td>Initials of the state of residence.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<blockquote>
+<p>To auto-fill the form fields, provide any number of the following data parameters:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-gender=</span><span class="s">"m"</span>
+      <span class="na">data-dob=</span><span class="s">"19850101"</span>
+      <span class="na">data-height=</span><span class="s">"72"</span>
+      <span class="na">data-weight=</span><span class="s">"175"</span>
+      <span class="na">data-state=</span><span class="s">"TX"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?gender=m&amp;dob=19850101&amp;height=72&amp;weight=175&amp;state=TX
+</span></code></pre><h2 id='skip-form'>Skip Form</h2>
+<p>If all information in the quote form is provided (refer to Form Auto-fill section), you can also opt to skip the form entirely and show your users their indicative quote info on-load.</p>
+
+<blockquote>
+<p>To auto-fill and bypass the form, provide all form fields and the skipform parameter:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-gender=</span><span class="s">"m"</span>
+      <span class="na">data-dob=</span><span class="s">"19850101"</span>
+      <span class="na">data-height=</span><span class="s">"72"</span>
+      <span class="na">data-weight=</span><span class="s">"175"</span>
+      <span class="na">data-state=</span><span class="s">"TX"</span>
+      <span class="na">data-skipform=</span><span class="s">"true"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?gender=m&amp;dob=19850101&amp;height=72&amp;weight=175&amp;state=TX&amp;skipform=true
+</span></code></pre>
+<!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+</aside> -->
+<h2 id='products'>Products</h2>
+<p>By default, all product terms are available to your users. But if you want to control your users&#39; options on product term, simply provide a parameter for each product to make available.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code>data-products=&quot;BT1002&quot;</code> - this means you want to exclude all other products besides <code>BT1002</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Product Code</th>
+<th>Product Term</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BT0201</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>BT1002</td>
+<td>10 Years</td>
+</tr>
+<tr>
+<td>BT2002</td>
+<td>20 Years</td>
+</tr>
+</tbody></table>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>To restrict user available product terms to one product:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-products=</span><span class="s">"BT1002"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?products=BT1002
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<blockquote>
+<p>To restrict down to multiple product terms, just add another products parameter:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-products=</span><span class="s">"BT1002"</span>
+      <span class="na">data-products=</span><span class="s">"BT2002"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?products=BT1002&amp;products=BT2002
+</span></code></pre><h2 id='default-coverage-amount'>Default Coverage Amount</h2>
+<p>You can specify the default coverage amount selected on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<blockquote>
+<p>To set a default coverage amount:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-coverage=</span><span class="s">"150000"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?coverage=150000
+</span></code></pre><h2 id='minimum-coverage-amount'>Minimum Coverage Amount</h2>
+<p>You can control user access to a minimum coverage amount selectable on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.</p>
+
+<blockquote>
+<p>To set a minimum coverage amount:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-mincoverage=</span><span class="s">"150000"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?mincoverage=150000
+</span></code></pre><h2 id='theme-modification-poc-not-available-yet'>Theme Modification (POC, not available yet)</h2>
+<p>You can modify some of the colors in the widget</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>bgcolor</td>
+<td>hexidecimal</td>
+<td>Changes the color of the widget card background.</td>
+</tr>
+<tr>
+<td>fontcolor</td>
+<td>hexidecimal</td>
+<td>Changes the font color of components that use the theme&#39;s primary text.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>To modify the theme colors:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script
+      </span><span class="na">data-fontcolor=</span><span class="s">"FFF000"</span>
+      <span class="na">data-bgcolor=</span><span class="s">"FF0000"</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+    <span class="nt">/&gt;</span><span class="err">
+  &lt;/body&gt;
+&lt;/html&gt;
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?fontcolor=FFF000&amp;bgcolor=FF0000
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="html">html</a>
+                <a href="#" data-language-name="http">http</a>
           </div>
       </div>
     </div>
