@@ -24,114 +24,199 @@ Welcome to the Quote Widget documentation!
 > For the most basic usage:
 
 ```html
-<html>
-  <body>
-    <script src="https://embed.hellobestow.com/static/js/embedded-quote.js" />
-  </body>
-</html>
-```
-
-```http
-https://embed.hellobestow.com/
-```
-
-The Quote widget is usable in two ways:
-
-1. You can inject a script tag directly into your website and use customization data parameters (html). All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`.
-2. Alternatively, you can direct users to a link and provide customization query parameters (http).
-
-Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
-
-# Customization
-
-## Sizing (html only)
-
-> For sizing control:
-
-```html
-<html>
-  <body>
-    <div height="500" width="400">
-      <script src="https://embed.hellobestow.com/static/js/embedded-quote.js" />
-    </div>
-  </body>
-</html>
+<body>
+  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
+</body>
 ```
 
 ```http
 <NOT APPLICABLE>
 ```
 
-To determine the size of the embed, wrap the script in a container div and style the height and width.
+> When the above script executes, the resulting DOM will look something like this:
 
-## Form Auto-fill
+```html
+<body>
+  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
+  <script src="https://embed.hellobestow.com/static/js/runtime~main.fdfcfda2.js"></script>
+  <div id="tooltip-root"></div>
+  <div id="bestow-root-el">...</div>
+  <script src="https://embed.hellobestow.com/static/js/2.092fa89c.chunk.js"></script>
+  <script src="https://embed.hellobestow.com/static/js/main.405cb6fb.chunk.js"></script>
+</body>
+```
 
-To auto-fill the quote form on-load, provide their associative data parameters.
+```http
+<NOT APPLICABLE>
+```
 
-| Parameter | Format                             | Description                                                                                  |
-| --------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
-| gender    | m / f initial                      | Gender formatted as initial.                                                                 |
-| dob       | yyyymmdd                           | Birthdate integer formatted in the order of year, month, day. No hyphens or slashes.         |
-| height    | integer                            | Calculate 12 \* number of feet + number of inches (filled on the form as 2 separate values). |
-| weight    | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                |
-| state     | state initials                     | Initials of the state of residence.                                                          |
+All that is required to display Bestow's Quote Widget on your website, is adding a script to your HTML!
+
+**IMPORTANT:** The script will bootstrap the other scripts required to render the widget and then append the widget's root `<div>` at the same level in the DOM tree. Therefore the script tag MUST be placed in the `<body>` in order to avoid semantically incorrect HTML and possible errors.
+
+## Sizing (html only)
+
+> For sizing control:
+
+```html
+
+<div height="500" width="400">
+  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
+</div>
+
+```
+
+```http
+<NOT APPLICABLE>
+```
+
+The default behavior is to expand to the width of whatever parent element the `<script>` is placed inside. To limit the size of the embedded widget, wrap the script in a container div and style the height and width.
+
+## Initialization
+
+The widget supports initialization/auto-fill of form fields via one of two methods:
+
+1. You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`).
+
+2. Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). **IMPORTANT NOTE:** URL query parameters take precedence over data attributes. If you have your script located at `http://your-domain.com/?height=72` and your script tag reads `<script src="https://embed.hellobestow.com/static/js/embedded-quote.js" data-weight="160"></script>`, the `data-weight` attribute will be ignored in favor of the query parameters and only `height` will be initialized. 
+
+Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
+
+# API
+
+## Initialization Parameters
+
+The widget can be _initialized_ with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:
+
+| Parameter                          | Format                             | Description                                                                                  |
+| ---------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| gender                             | m / f initial                      | Gender formatted as initial.                                                                 |
+| date_of_birth                      | dd/mm/yyyy                         | Birthdate string formatted in the order of day-month-year, with slashes between.             |
+| date_of_birth&#124;yyyymmdd        | yyyy-mm-dd                         | Birthdate string formatted in the order of year-month-day, with dashes between.              |
+| height                             | integer                            | Height in inches (displayed on the form as 2 separate values, feet and inches).              |
+| weight                             | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                |
+| state                              | state initials (TX, MI, CA)        | Abbreviation of the state of residence.                                                      |
+| coverage                           | integer                            | The initial amount of coverage, in increments of 50,000 only.                                |
+| mincoverage                        | integer                            | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).   |
+| products                           | product code                       | See "Products" section for details.       |
+| skipform                           | boolean                            | Initializes to quote screen, bypassing the form. Only valid value is true, all others ignored. (See caveat in Skip Form section). |
+
 
 > To auto-fill the form fields, provide any number of the following data parameters:
 
 ```html
-<html>
-  <body>
-    <script
-      data-gender="m"
-      data-dob="19850101"
-      data-height="72"
-      data-weight="175"
-      data-state="TX"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
+<script
+  data-gender="m"
+  data-date_of_birth="01/01/1991"
+  data-height="72"
+  data-weight="175"
+  data-state="TX"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/></script>
 ```
 
 ```http
-https://embed.hellobestow.com?gender=m&dob=19850101&height=72&weight=175&state=TX
+https://embed.hellobestow.com?gender=m&date_of_birth=19850101&height=72&weight=175&state=TX
 ```
+
+## Coverage Options
+
+The widget can be initialized with a preselected coverage amount, as well as a minimum value that prevents the user from selecting a lower coverage amount.
+
+### Default Coverage Amount
+
+You can specify the default coverage amount selected on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be an increment of 50,000.
+
+> To set a default coverage amount:
+
+```html
+<script
+  data-coverage="150000"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
+```
+
+```http
+https://embed.hellobestow.com?coverage=150000
+```
+
+### Minimum Coverage Amount
+
+You can control user access to a minimum coverage amount selectable on the coverage slider. Provide the parameter with a dollar value as an integer. Again, the number must be an increment of 50,000.
+
+> To set a minimum coverage amount:
+
+```html
+<script
+  data-mincoverage="150000"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
+```
+
+```http
+https://embed.hellobestow.com?mincoverage=150000
+```
+
+**CAVEAT:** If a `coverage` param is set to a value lower than the `mincoverage` param, the widget will ignore `coverage`, default to `mincoverage`, and generate an error in the console.
+
+> This will default to mincoverage:
+
+```html
+<script
+  data-coverage="150000"
+  data-mincoverage="300000"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js">
+</script>
+```
+
+```http
+https://embed.hellobestow.com?coverage=150000&mincoverage=300000
+```
+
 
 ## Skip Form
 
 If all information in the quote form is provided (refer to Form Auto-fill section), you can also opt to skip the form entirely and show your users their indicative quote info on-load.
 
+**CAVEAT:** if the form is missing one of the required values, the `skipform` parameter will not be respected. Instead, the widget will show the form and generate an error in the console.
+
 > To auto-fill and bypass the form, provide all form fields and the skipform parameter:
 
 ```html
-<html>
-  <body>
-    <script
-      data-gender="m"
-      data-dob="19850101"
-      data-height="72"
-      data-weight="175"
-      data-state="TX"
-      data-skipform="true"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
+<script
+  data-gender="m"
+  data-date_of_birth="01/01/1991"
+  data-height="72"
+  data-weight="175"
+  data-state="TX"
+  data-skipform="true"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
 ```
 
 ```http
-https://embed.hellobestow.com?gender=m&dob=19850101&height=72&weight=175&state=TX&skipform=true
+https://embed.hellobestow.com?gender=m&date_of_birth=01/01/1991&height=72&weight=175&state=TX&skipform=true
+```
+
+> This is invalid:
+
+```html
+<script data-skipform="true"></script>
+```
+
+```http
+https://embed.hellobestow.com?skipform=true
 ```
 
 <!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside> -->
 
-## Products
+## Products (i.e. term choice)
 
 By default, all product terms are available to your users. But if you want to control your users' options on product term, simply provide a parameter for each product to make available.
 
-`data-products="BT1002"` - this means you want to exclude all other products besides `BT1002`
+`data-products="BT1002"` - this means you want to include ONLY `BT1002`
 
 | Product Code | Product Term |
 | ------------ | ------------ |
@@ -142,14 +227,10 @@ By default, all product terms are available to your users. But if you want to co
 > To restrict user available product terms to one product:
 
 ```html
-<html>
-  <body>
-    <script
-      data-products="BT1002"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
+<script
+  data-products="BT1002"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
 ```
 
 ```http
@@ -159,61 +240,15 @@ https://embed.hellobestow.com?products=BT1002
 > To restrict down to multiple product terms, just add another products parameter:
 
 ```html
-<html>
-  <body>
-    <script
-      data-products="BT1002"
-      data-products="BT2002"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
+<script
+  data-products="BT1002"
+  data-products="BT2002"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
 ```
 
 ```http
 https://embed.hellobestow.com?products=BT1002&products=BT2002
-```
-
-## Default Coverage Amount
-
-You can specify the default coverage amount selected on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.
-
-> To set a default coverage amount:
-
-```html
-<html>
-  <body>
-    <script
-      data-coverage="150000"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
-```
-
-```http
-https://embed.hellobestow.com?coverage=150000
-```
-
-## Minimum Coverage Amount
-
-You can control user access to a minimum coverage amount selectable on the coverage slider. Provide the parameter with a dollar value as an integer. The number must be one of the available options.
-
-> To set a minimum coverage amount:
-
-```html
-<html>
-  <body>
-    <script
-      data-mincoverage="150000"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
-```
-
-```http
-https://embed.hellobestow.com?mincoverage=150000
 ```
 
 ## Theme Modification (POC, not available yet)
@@ -228,15 +263,11 @@ You can modify some of the colors in the widget
 > To modify the theme colors:
 
 ```html
-<html>
-  <body>
-    <script
-      data-fontcolor="FFF000"
-      data-bgcolor="FF0000"
-      src="https://embed.hellobestow.com/static/js/embedded-quote.js"
-    />
-  </body>
-</html>
+<script
+  data-fontcolor="FFF000"
+  data-bgcolor="FF0000"
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+/>
 ```
 
 ```http
