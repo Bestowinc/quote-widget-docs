@@ -289,11 +289,9 @@
 <blockquote>
 <p>For sizing control:</p>
 </blockquote>
-<pre class="highlight html tab-html"><code>
-<span class="nt">&lt;div</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">width=</span><span class="s">"400"</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">width=</span><span class="s">"400"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-
 </code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
 </span></code></pre>
 <p>The default behavior is to expand to the width of whatever parent element the <code>&lt;script&gt;</code> is placed inside. To limit the size of the embedded widget, wrap the script in a container div and style the height and width.</p>
@@ -302,7 +300,7 @@
 
 <ol>
 <li><p>You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with <code>data-</code>. For example, the <code>products</code> parameter should be <code>data-products</code>).</p></li>
-<li><p>Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). <strong>IMPORTANT NOTE:</strong> URL query parameters take precedence over data attributes. If you have your script located at <code>http://your-domain.com/?height=72</code> and your script tag reads <code>&lt;script src=&quot;https://embed.hellobestow.com/static/js/embedded-quote.js&quot; data-weight=&quot;160&quot;&gt;&lt;/script&gt;</code>, the <code>data-weight</code> attribute will be ignored in favor of the query parameters and only <code>height</code> will be initialized. </p></li>
+<li><p>Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). <strong>IMPORTANT NOTE:</strong> URL query parameters take precedence over data attributes. If you have your script located at <code>http://your-domain.com/?height=72</code> and your script tag reads <code>&lt;script src=&quot;https://embed.hellobestow.com/static/js/embedded-quote.js&quot; data-weight=&quot;160&quot;&gt;&lt;/script&gt;</code>, the <code>data-weight</code> attribute will be ignored in favor of the query parameters and only <code>height</code> will be initialized.</p></li>
 </ol>
 
 <p>Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.</p>
@@ -322,14 +320,9 @@
 <td>Gender formatted as initial.</td>
 </tr>
 <tr>
-<td>date_of_birth</td>
-<td>dd/mm/yyyy</td>
-<td>Birthdate string formatted in the order of day-month-year, with slashes between.</td>
-</tr>
-<tr>
-<td>date_of_birth&#124;yyyymmdd</td>
-<td>yyyy-mm-dd</td>
-<td>Birthdate string formatted in the order of year-month-day, with dashes between.</td>
+<td>date_of_birth, date_of_birth&#124;yyyymmdd</td>
+<td>dd/mm/yyyy, yyyy-mm-dd, yyyymmdd</td>
+<td>Birthdate in any one of three supported formats.</td>
 </tr>
 <tr>
 <td>height</td>
@@ -413,8 +406,8 @@
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-coverage=</span><span class="s">"150000"</span>
   <span class="na">data-mincoverage=</span><span class="s">"300000"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/script&gt;</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?coverage=150000&amp;mincoverage=300000
 </span></code></pre><h2 id='skip-form'>Skip Form</h2>
 <p>If all information in the quote form is provided (refer to Form Auto-fill section), you can also opt to skip the form entirely and show your users their indicative quote info on-load.</p>
