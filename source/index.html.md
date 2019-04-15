@@ -59,11 +59,9 @@ All that is required to display Bestow's Quote Widget on your website, is adding
 > For sizing control:
 
 ```html
-
 <div height="500" width="400">
   <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
 </div>
-
 ```
 
 ```http
@@ -78,7 +76,7 @@ The widget supports initialization/auto-fill of form fields via one of two metho
 
 1. You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`).
 
-2. Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). **IMPORTANT NOTE:** URL query parameters take precedence over data attributes. If you have your script located at `http://your-domain.com/?height=72` and your script tag reads `<script src="https://embed.hellobestow.com/static/js/embedded-quote.js" data-weight="160"></script>`, the `data-weight` attribute will be ignored in favor of the query parameters and only `height` will be initialized. 
+2. Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). **IMPORTANT NOTE:** URL query parameters take precedence over data attributes. If you have your script located at `http://your-domain.com/?height=72` and your script tag reads `<script src="https://embed.hellobestow.com/static/js/embedded-quote.js" data-weight="160"></script>`, the `data-weight` attribute will be ignored in favor of the query parameters and only `height` will be initialized.
 
 Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
 
@@ -88,19 +86,17 @@ Both experiences are provided samples. Simply click on the code sample tab that 
 
 The widget can be _initialized_ with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:
 
-| Parameter                          | Format                             | Description                                                                                  |
-| ---------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
-| gender                             | m / f initial                      | Gender formatted as initial.                                                                 |
-| date_of_birth                      | dd/mm/yyyy                         | Birthdate string formatted in the order of day-month-year, with slashes between.             |
-| date_of_birth&#124;yyyymmdd        | yyyy-mm-dd                         | Birthdate string formatted in the order of year-month-day, with dashes between.              |
-| height                             | integer                            | Height in inches (displayed on the form as 2 separate values, feet and inches).              |
-| weight                             | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                |
-| state                              | state initials (TX, MI, CA)        | Abbreviation of the state of residence.                                                      |
-| coverage                           | integer                            | The initial amount of coverage, in increments of 50,000 only.                                |
-| mincoverage                        | integer                            | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).   |
-| products                           | product code                       | See "Products" section for details.       |
-| skipform                           | boolean                            | Initializes to quote screen, bypassing the form. Only valid value is true, all others ignored. (See caveat in Skip Form section). |
-
+| Parameter                                  | Format                             | Description                                                                                                                       |
+| ------------------------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| gender                                     | m / f initial                      | Gender formatted as initial.                                                                                                      |
+| date_of_birth, date_of_birth&#124;yyyymmdd | dd/mm/yyyy, yyyy-mm-dd, yyyymmdd   | Birthdate in any one of three supported formats.                                                                                  |
+| height                                     | integer                            | Height in inches (displayed on the form as 2 separate values, feet and inches).                                                   |
+| weight                                     | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                                                     |
+| state                                      | state initials (TX, MI, CA)        | Abbreviation of the state of residence.                                                                                           |
+| coverage                                   | integer                            | The initial amount of coverage, in increments of 50,000 only.                                                                     |
+| mincoverage                                | integer                            | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).      |
+| products                                   | product code                       | See "Products" section for details.                                                                                               |
+| skipform                                   | boolean                            | Initializes to quote screen, bypassing the form. Only valid value is true, all others ignored. (See caveat in Skip Form section). |
 
 > To auto-fill the form fields, provide any number of the following data parameters:
 
@@ -165,14 +161,13 @@ https://embed.hellobestow.com?mincoverage=150000
 <script
   data-coverage="150000"
   data-mincoverage="300000"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js">
-</script>
+  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+></script>
 ```
 
 ```http
 https://embed.hellobestow.com?coverage=150000&mincoverage=300000
 ```
-
 
 ## Skip Form
 
