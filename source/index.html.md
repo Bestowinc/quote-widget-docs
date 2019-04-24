@@ -246,7 +246,7 @@ https://embed.hellobestow.com?products=BT1002
 https://embed.hellobestow.com?products=BT1002&products=BT2002
 ```
 
-## Theme Modification (POC, not available yet)
+## Theme Modification
 
 You can modify some of the colors in the widget
 
