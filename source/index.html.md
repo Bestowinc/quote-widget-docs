@@ -86,17 +86,17 @@ Both experiences are provided samples. Simply click on the code sample tab that 
 
 The widget can be _initialized_ with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:
 
-| Parameter                                  | Format                             | Description                                                                                                                       |
-| ------------------------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| gender                                     | m / f initial                      | Gender formatted as initial.                                                                                                      |
-| date_of_birth, date_of_birth&#124;yyyymmdd | dd/mm/yyyy, yyyy-mm-dd, yyyymmdd   | Birthdate in any one of three supported formats.                                                                                  |
-| height                                     | integer                            | Height in inches (displayed on the form as 2 separate values, feet and inches).                                                   |
-| weight                                     | floating number, one decimal point | Weight in pounds (one decimal point allowed).                                                                                     |
-| state                                      | state initials (TX, MI, CA)        | Abbreviation of the state of residence.                                                                                           |
-| coverage                                   | integer                            | The initial amount of coverage, in increments of 50,000 only.                                                                     |
-| mincoverage                                | integer                            | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).      |
-| products                                   | product code                       | See "Products" section for details.                                                                                               |
-| skipform                                   | boolean                            | Initializes to quote screen, bypassing the form. Only valid value is true, all others ignored. (See caveat in Skip Form section). |
+| Parameter                                            | Format                                                          | Description                                                                                                                       |
+| ---------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| gender                                               | m / f initial                                                   | Gender formatted as initial.                                                                                                      |
+| date_of_birth, date_of_birth&#124;yyyymmdd, birthday | "dd/mm/yyyy", "yyyy-mm-dd", "yyyymmdd", "yyyymmdd 00:00:00 UTC" | Birthdate in any one of four supported formats.                                                                                   |
+| height                                               | integer                                                         | Height in inches (displayed on the form as 2 separate values, feet and inches).                                                   |
+| weight                                               | floating number, one decimal point                              | Weight in pounds (one decimal point allowed).                                                                                     |
+| state                                                | state initials (TX, MI, CA)                                     | Abbreviation of the state of residence.                                                                                           |
+| coverage                                             | integer                                                         | The initial amount of coverage, in increments of 50,000 only.                                                                     |
+| mincoverage                                          | integer                                                         | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).      |
+| products                                             | product code                                                    | See "Products" section for details.                                                                                               |
+| skipform                                             | boolean                                                         | Initializes to quote screen, bypassing the form. Only valid value is true, all others ignored. (See caveat in Skip Form section). |
 
 > To auto-fill the form fields, provide any number of the following data parameters:
 
