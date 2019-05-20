@@ -53,19 +53,17 @@ https://partners.hellobestow.com/enroll/
 <NOT APPLICABLE>
 ```
 
+**Both experiences below are provided samples. Simply click on the code sample tab that applies to your needs.**
+
 **FOR SCRIPT USAGE (HTML):** All that is required to display Bestow's Quote Widget on your website is adding a script to your HTML. The script will bootstrap an `<iframe>` at the same level in the DOM tree. Therefore the script tag MUST be placed in the `<body>` in order to avoid semantically incorrect HTML and possible errors.
+
+The embed widget supports initialization/auto-fill of form fields via HTML5 data attributes. All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`).
 
 **FOR QUERY PARAMETER USAGE (HTTP):** Provide a link in your application with the appropriate URL. The documentation will refer to `https://partners.hellobestow.com/enroll/` as the base URL. If you have been provided a different `Partner` landing page, please use that instead.
 
+To access the API, you must include query parameters in the URL of your link (see `http` tab for examples).
+
 # API
-
-The widget supports initialization/auto-fill of form fields via one of two methods:
-
-1. You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`).
-
-2. If you are working with our Partner in-house landing pages, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples).
-
-Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
 
 ## Initialization Parameters
 
