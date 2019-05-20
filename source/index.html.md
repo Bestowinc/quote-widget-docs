@@ -25,24 +25,27 @@ Welcome to the Quote Widget documentation!
 
 ```html
 <body>
-  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
+  <script src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"></script>
 </body>
 ```
 
 ```http
-<NOT APPLICABLE>
+https://partners.hellobestow.com/enroll/
 ```
 
 > When the above script executes, the resulting DOM will look something like this:
 
 ```html
 <body>
-  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
-  <script src="https://embed.hellobestow.com/static/js/runtime~main.fdfcfda2.js"></script>
-  <div id="tooltip-root"></div>
-  <div id="bestow-root-el">...</div>
-  <script src="https://embed.hellobestow.com/static/js/2.092fa89c.chunk.js"></script>
-  <script src="https://embed.hellobestow.com/static/js/main.405cb6fb.chunk.js"></script>
+  <script src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"></script>
+  <div style="height: auto">
+    <iframe
+      src="https://embed.hellobestow.com/?widget=basic1&isIframe=true"
+      name="bestowQuote"
+    >
+      ...
+    </iframe>
+  </div>
 </body>
 ```
 
@@ -50,37 +53,19 @@ Welcome to the Quote Widget documentation!
 <NOT APPLICABLE>
 ```
 
-All that is required to display Bestow's Quote Widget on your website, is adding a script to your HTML!
+**FOR SCRIPT USAGE (HTML):** All that is required to display Bestow's Quote Widget on your website is adding a script to your HTML. The script will bootstrap an `<iframe>` at the same level in the DOM tree. Therefore the script tag MUST be placed in the `<body>` in order to avoid semantically incorrect HTML and possible errors.
 
-**IMPORTANT:** The script will bootstrap the other scripts required to render the widget and then append the widget's root `<div>` at the same level in the DOM tree. Therefore the script tag MUST be placed in the `<body>` in order to avoid semantically incorrect HTML and possible errors.
+**FOR QUERY PARAMETER USAGE (HTTP):** Provide a link in your application with the appropriate URL. The documentation will refer to `https://partners.hellobestow.com/enroll/` as the base URL. If you have been provided a different `Partner` landing page, please use that instead.
 
-## Sizing (html only)
-
-> For sizing control:
-
-```html
-<div height="500" width="400">
-  <script src="https://embed.hellobestow.com/static/js/embedded-quote.js"></script>
-</div>
-```
-
-```http
-<NOT APPLICABLE>
-```
-
-The default behavior is to expand to the width of whatever parent element the `<script>` is placed inside. To limit the size of the embedded widget, wrap the script in a container div and style the height and width.
-
-## Initialization
+# API
 
 The widget supports initialization/auto-fill of form fields via one of two methods:
 
 1. You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with `data-`. For example, the `products` parameter should be `data-products`).
 
-2. Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). **IMPORTANT NOTE:** URL query parameters take precedence over data attributes. If you have your script located at `http://your-domain.com/?height=72` and your script tag reads `<script src="https://embed.hellobestow.com/static/js/embedded-quote.js" data-weight="160"></script>`, the `data-weight` attribute will be ignored in favor of the query parameters and only `height` will be initialized.
+2. If you are working with our Partner in-house landing pages, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples).
 
 Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.
-
-# API
 
 ## Initialization Parameters
 
@@ -89,7 +74,7 @@ The widget can be _initialized_ with a combination of parameters if you so choos
 | Parameter                                            | Format                                                          | Description                                                                                                                       |
 | ---------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | gender                                               | m / f initial                                                   | Gender formatted as initial.                                                                                                      |
-| date_of_birth, date_of_birth&#124;yyyymmdd, birthday | "dd/mm/yyyy", "yyyy-mm-dd", "yyyymmdd", "yyyymmdd 00:00:00 UTC" | Birthdate in any one of four supported formats.                                                                                   |
+| date_of_birth, date_of_birth&#124;yyyymmdd, birthday | "dd/mm/yyyy", "yyyy-mm-dd", "yyyymmdd", "yyyymmdd 00:00:00 UTC" | Birthdate in any one of three supported parameter names and any one of four supported formats.                                    |
 | height                                               | integer                                                         | Height in inches (displayed on the form as 2 separate values, feet and inches).                                                   |
 | weight                                               | floating number, one decimal point                              | Weight in pounds (one decimal point allowed).                                                                                     |
 | state                                                | state initials (TX, MI, CA)                                     | Abbreviation of the state of residence.                                                                                           |
@@ -107,12 +92,39 @@ The widget can be _initialized_ with a combination of parameters if you so choos
   data-height="72"
   data-weight="175"
   data-state="TX"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 /></script>
 ```
 
 ```http
-https://embed.hellobestow.com?gender=m&date_of_birth=19850101&height=72&weight=175&state=TX
+https://partners.hellobestow.com/enroll/?gender=m&date_of_birth=19850101&height=72&weight=175&state=TX
+```
+
+## Campaign Parameters
+
+You can provide `utm_` parameters for proper affiliate tracking. All parameters below are supported.
+
+| Paremeter   |
+| ----------- |
+| utm_source  |
+| utm_name    |
+| utm_medium  |
+| utm_content |
+| utm_term    |
+
+```html
+<script
+  data-utm_source="Source"
+  data-utm_name="Name"
+  data-utm_medium="Medium"
+  data-utm_content="Content"
+  data-utm_term="Term"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
+></script>
+```
+
+```http
+https://partners.hellobestow.com/enroll/?utm_source=Source&utm_name=Name&utm_medium=Medium&utm_content=Content&utm_term=Term
 ```
 
 ## Coverage Options
@@ -128,12 +140,12 @@ You can specify the default coverage amount selected on the coverage slider. Pro
 ```html
 <script
   data-coverage="150000"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?coverage=150000
+https://partners.hellobestow.com/enroll/?coverage=150000
 ```
 
 ### Minimum Coverage Amount
@@ -145,12 +157,12 @@ You can control user access to a minimum coverage amount selectable on the cover
 ```html
 <script
   data-mincoverage="150000"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?mincoverage=150000
+https://partners.hellobestow.com/enroll/?mincoverage=150000
 ```
 
 **CAVEAT:** If a `coverage` param is set to a value lower than the `mincoverage` param, the widget will ignore `coverage`, default to `mincoverage`, and generate an error in the console.
@@ -161,12 +173,12 @@ https://embed.hellobestow.com?mincoverage=150000
 <script
   data-coverage="150000"
   data-mincoverage="300000"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 ></script>
 ```
 
 ```http
-https://embed.hellobestow.com?coverage=150000&mincoverage=300000
+https://partners.hellobestow.com/enroll/?coverage=150000&mincoverage=300000
 ```
 
 ## Skip Form
@@ -185,33 +197,43 @@ If all information in the quote form is provided (refer to Form Auto-fill sectio
   data-weight="175"
   data-state="TX"
   data-skipform="true"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?gender=m&date_of_birth=01/01/1991&height=72&weight=175&state=TX&skipform=true
+https://partners.hellobestow.com/enroll/?gender=m&date_of_birth=01/01/1991&height=72&weight=175&state=TX&skipform=true
 ```
 
 > This is invalid:
 
 ```html
-<script data-skipform="true"></script>
+<script
+  data-gender="m"
+  data-skipform="true"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
+></script>
 ```
 
 ```http
-https://embed.hellobestow.com?skipform=true
+https://partners.hellobestow.com/enroll/?gender=m&skipform=true
 ```
-
-<!-- <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside> -->
 
 ## Products (i.e. term choice)
 
-By default, all product terms are available to your users. But if you want to control your users' options on product term, simply provide a parameter for each product to make available.
+By default, all product terms are available to your users. But if you want to control your users' options on product term, simply provide a parameter/value for each product to make available.
+
+**FOR SCRIPT USAGE (HTML):**
 
 `data-products="BT1002"` - this means you want to include ONLY `BT1002`
+
+`data-products="BT1002,BT2002"` - this means you want to include `BT1002` and `BT2002`.
+
+**FOR QUERY PARAM USAGE (HTTP):** If using the Query Param implementation, separate each product into its own `products` parameter. See the example for use case.
+
+`products=BT1002` - this means you want to include ONLY `BT1002`
+
+`products=BT1002&products=BT2002` - this means you want to include `BT1002` and `BT2002`.
 
 | Product Code | Product Term |
 | ------------ | ------------ |
@@ -224,26 +246,25 @@ By default, all product terms are available to your users. But if you want to co
 ```html
 <script
   data-products="BT1002"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?products=BT1002
+https://partners.hellobestow.com/enroll/?products=BT1002
 ```
 
-> To restrict down to multiple product terms, just add another products parameter:
+> To restrict down to multiple product terms:
 
 ```html
 <script
-  data-products="BT1002"
-  data-products="BT2002"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  data-products="BT1002,BT2002"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?products=BT1002&products=BT2002
+https://partners.hellobestow.com/enroll/?products=BT1002&products=BT2002
 ```
 
 ## Theme Modification
@@ -261,10 +282,10 @@ You can modify some of the colors in the widget
 <script
   data-fontcolor="FFF000"
   data-bgcolor="FF0000"
-  src="https://embed.hellobestow.com/static/js/embedded-quote.js"
+  src="https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"
 />
 ```
 
 ```http
-https://embed.hellobestow.com?fontcolor=FFF000&bgcolor=FF0000
+https://partners.hellobestow.com/enroll/?fontcolor=FFF000&bgcolor=FF0000
 ```
