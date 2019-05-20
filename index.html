@@ -280,19 +280,16 @@
 <span class="nt">&lt;/body&gt;</span>
 </code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
 </span></code></pre>
+<p><strong>Both experiences below are provided samples. Simply click on the code sample tab that applies to your needs.</strong></p>
+
 <p><strong>FOR SCRIPT USAGE (HTML):</strong> All that is required to display Bestow&#39;s Quote Widget on your website is adding a script to your HTML. The script will bootstrap an <code>&lt;iframe&gt;</code> at the same level in the DOM tree. Therefore the script tag MUST be placed in the <code>&lt;body&gt;</code> in order to avoid semantically incorrect HTML and possible errors.</p>
 
+<p>The embed widget supports initialization/auto-fill of form fields via HTML5 data attributes. All parameters need to be prefixed with <code>data-</code>. For example, the <code>products</code> parameter should be <code>data-products</code>).</p>
+
 <p><strong>FOR QUERY PARAMETER USAGE (HTTP):</strong> Provide a link in your application with the appropriate URL. The documentation will refer to <code>https://partners.hellobestow.com/enroll/</code> as the base URL. If you have been provided a different <code>Partner</code> landing page, please use that instead.</p>
-<h1 id='api'>API</h1>
-<p>The widget supports initialization/auto-fill of form fields via one of two methods:</p>
 
-<ol>
-<li><p>You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with <code>data-</code>. For example, the <code>products</code> parameter should be <code>data-products</code>).</p></li>
-<li><p>If you are working with our Partner in-house landing pages, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples).</p></li>
-</ol>
-
-<p>Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.</p>
-<h2 id='initialization-parameters'>Initialization Parameters</h2>
+<p>To access the API, you must include query parameters in the URL of your link (see <code>http</code> tab for examples).</p>
+<h1 id='api'>API</h1><h2 id='initialization-parameters'>Initialization Parameters</h2>
 <p>The widget can be <em>initialized</em> with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:</p>
 
 <table><thead>
