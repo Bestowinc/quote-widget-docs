@@ -224,20 +224,15 @@
           </li>
           <li>
             <a href="#get-started" class="toc-h1 toc-link" data-title="Get Started">Get Started</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#sizing-html-only" class="toc-h2 toc-link" data-title="Sizing (html only)">Sizing (html only)</a>
-                  </li>
-                  <li>
-                    <a href="#initialization" class="toc-h2 toc-link" data-title="Initialization">Initialization</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#api" class="toc-h1 toc-link" data-title="API">API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#initialization-parameters" class="toc-h2 toc-link" data-title="Initialization Parameters">Initialization Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#campaign-parameters" class="toc-h2 toc-link" data-title="Campaign Parameters">Campaign Parameters</a>
                   </li>
                   <li>
                     <a href="#coverage-options" class="toc-h2 toc-link" data-title="Coverage Options">Coverage Options</a>
@@ -265,46 +260,39 @@
 <p>For the most basic usage:</p>
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
+</code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/
 </span></code></pre>
 <blockquote>
 <p>When the above script executes, the resulting DOM will look something like this:</p>
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/runtime~main.fdfcfda2.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tooltip-root"</span><span class="nt">&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"bestow-root-el"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/2.092fa89c.chunk.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/main.405cb6fb.chunk.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"height: auto"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;iframe</span>
+      <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/?widget=basic1&amp;isIframe=true"</span>
+      <span class="na">name=</span><span class="s">"bestowQuote"</span>
+    <span class="nt">&gt;</span>
+      ...
+    <span class="nt">&lt;/iframe&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 </code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
 </span></code></pre>
-<p>All that is required to display Bestow&#39;s Quote Widget on your website, is adding a script to your HTML!</p>
+<p><strong>FOR SCRIPT USAGE (HTML):</strong> All that is required to display Bestow&#39;s Quote Widget on your website is adding a script to your HTML. The script will bootstrap an <code>&lt;iframe&gt;</code> at the same level in the DOM tree. Therefore the script tag MUST be placed in the <code>&lt;body&gt;</code> in order to avoid semantically incorrect HTML and possible errors.</p>
 
-<p><strong>IMPORTANT:</strong> The script will bootstrap the other scripts required to render the widget and then append the widget&#39;s root <code>&lt;div&gt;</code> at the same level in the DOM tree. Therefore the script tag MUST be placed in the <code>&lt;body&gt;</code> in order to avoid semantically incorrect HTML and possible errors.</p>
-<h2 id='sizing-html-only'>Sizing (html only)</h2>
-<blockquote>
-<p>For sizing control:</p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">height=</span><span class="s">"500"</span> <span class="na">width=</span><span class="s">"400"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre><pre class="highlight http tab-http"><code><span class="err">&lt;NOT APPLICABLE&gt;
-</span></code></pre>
-<p>The default behavior is to expand to the width of whatever parent element the <code>&lt;script&gt;</code> is placed inside. To limit the size of the embedded widget, wrap the script in a container div and style the height and width.</p>
-<h2 id='initialization'>Initialization</h2>
+<p><strong>FOR QUERY PARAMETER USAGE (HTTP):</strong> Provide a link in your application with the appropriate URL. The documentation will refer to <code>https://partners.hellobestow.com/enroll/</code> as the base URL. If you have been provided a different <code>Partner</code> landing page, please use that instead.</p>
+<h1 id='api'>API</h1>
 <p>The widget supports initialization/auto-fill of form fields via one of two methods:</p>
 
 <ol>
 <li><p>You can inject a script tag directly into your website and use HTML5 data attributes to initialize it. Any parameter that is valid as a query param will also work as a data attribute. (All parameters need to be prefixed with <code>data-</code>. For example, the <code>products</code> parameter should be <code>data-products</code>).</p></li>
-<li><p>Alternatively, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples). <strong>IMPORTANT NOTE:</strong> URL query parameters take precedence over data attributes. If you have your script located at <code>http://your-domain.com/?height=72</code> and your script tag reads <code>&lt;script src=&quot;https://embed.hellobestow.com/static/js/embedded-quote.js&quot; data-weight=&quot;160&quot;&gt;&lt;/script&gt;</code>, the <code>data-weight</code> attribute will be ignored in favor of the query parameters and only <code>height</code> will be initialized.</p></li>
+<li><p>If you are working with our Partner in-house landing pages, you can use query parameters in the URL of the page in which the script is appended (see http tab for examples).</p></li>
 </ol>
 
 <p>Both experiences are provided samples. Simply click on the code sample tab that applies to your needs.</p>
-<h1 id='api'>API</h1><h2 id='initialization-parameters'>Initialization Parameters</h2>
+<h2 id='initialization-parameters'>Initialization Parameters</h2>
 <p>The widget can be <em>initialized</em> with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:</p>
 
 <table><thead>
@@ -322,7 +310,7 @@
 <tr>
 <td>date_of_birth, date_of_birth&#124;yyyymmdd, birthday</td>
 <td>&quot;dd/mm/yyyy&quot;, &quot;yyyy-mm-dd&quot;, &quot;yyyymmdd&quot;, &quot;yyyymmdd 00:00:00 UTC&quot;</td>
-<td>Birthdate in any one of four supported formats.</td>
+<td>Birthdate in any one of three supported parameter names and any one of four supported formats.</td>
 </tr>
 <tr>
 <td>height</td>
@@ -370,9 +358,42 @@
   <span class="na">data-height=</span><span class="s">"72"</span>
   <span class="na">data-weight=</span><span class="s">"175"</span>
   <span class="na">data-state=</span><span class="s">"TX"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;&lt;/script&gt;</span>
-</code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?gender=m&amp;date_of_birth=19850101&amp;height=72&amp;weight=175&amp;state=TX
+</code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?gender=m&amp;date_of_birth=19850101&amp;height=72&amp;weight=175&amp;state=TX
+</span></code></pre><h2 id='campaign-parameters'>Campaign Parameters</h2>
+<p>You can provide <code>utm_</code> parameters for proper affiliate tracking. All parameters below are supported.</p>
+
+<table><thead>
+<tr>
+<th>Paremeter</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>utm_source</td>
+</tr>
+<tr>
+<td>utm_name</td>
+</tr>
+<tr>
+<td>utm_medium</td>
+</tr>
+<tr>
+<td>utm_content</td>
+</tr>
+<tr>
+<td>utm_term</td>
+</tr>
+</tbody></table>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script
+  </span><span class="na">data-utm_source=</span><span class="s">"Source"</span>
+  <span class="na">data-utm_name=</span><span class="s">"Name"</span>
+  <span class="na">data-utm_medium=</span><span class="s">"Medium"</span>
+  <span class="na">data-utm_content=</span><span class="s">"Content"</span>
+  <span class="na">data-utm_term=</span><span class="s">"Term"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?utm_source=Source&amp;utm_name=Name&amp;utm_medium=Medium&amp;utm_content=Content&amp;utm_term=Term
 </span></code></pre><h2 id='coverage-options'>Coverage Options</h2>
 <p>The widget can be initialized with a preselected coverage amount, as well as a minimum value that prevents the user from selecting a lower coverage amount.</p>
 <h3 id='default-coverage-amount'>Default Coverage Amount</h3>
@@ -383,9 +404,9 @@
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-coverage=</span><span class="s">"150000"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?coverage=150000
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?coverage=150000
 </span></code></pre><h3 id='minimum-coverage-amount'>Minimum Coverage Amount</h3>
 <p>You can control user access to a minimum coverage amount selectable on the coverage slider. Provide the parameter with a dollar value as an integer. Again, the number must be an increment of 50,000.</p>
 
@@ -394,9 +415,9 @@
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-mincoverage=</span><span class="s">"150000"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?mincoverage=150000
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?mincoverage=150000
 </span></code></pre>
 <p><strong>CAVEAT:</strong> If a <code>coverage</code> param is set to a value lower than the <code>mincoverage</code> param, the widget will ignore <code>coverage</code>, default to <code>mincoverage</code>, and generate an error in the console.</p>
 
@@ -406,9 +427,9 @@
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-coverage=</span><span class="s">"150000"</span>
   <span class="na">data-mincoverage=</span><span class="s">"300000"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?coverage=150000&amp;mincoverage=300000
+</code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?coverage=150000&amp;mincoverage=300000
 </span></code></pre><h2 id='skip-form'>Skip Form</h2>
 <p>If all information in the quote form is provided (refer to Form Auto-fill section), you can also opt to skip the form entirely and show your users their indicative quote info on-load.</p>
 
@@ -424,23 +445,33 @@
   <span class="na">data-weight=</span><span class="s">"175"</span>
   <span class="na">data-state=</span><span class="s">"TX"</span>
   <span class="na">data-skipform=</span><span class="s">"true"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?gender=m&amp;date_of_birth=01/01/1991&amp;height=72&amp;weight=175&amp;state=TX&amp;skipform=true
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?gender=m&amp;date_of_birth=01/01/1991&amp;height=72&amp;weight=175&amp;state=TX&amp;skipform=true
 </span></code></pre>
 <blockquote>
 <p>This is invalid:</p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">data-skipform=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?skipform=true
-</span></code></pre>
-<!-- <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside> -->
-<h2 id='products-i-e-term-choice'>Products (i.e. term choice)</h2>
-<p>By default, all product terms are available to your users. But if you want to control your users&#39; options on product term, simply provide a parameter for each product to make available.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script
+  </span><span class="na">data-gender=</span><span class="s">"m"</span>
+  <span class="na">data-skipform=</span><span class="s">"true"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
+<span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?gender=m&amp;skipform=true
+</span></code></pre><h2 id='products-i-e-term-choice'>Products (i.e. term choice)</h2>
+<p>By default, all product terms are available to your users. But if you want to control your users&#39; options on product term, simply provide a parameter/value for each product to make available.</p>
+
+<p><strong>FOR SCRIPT USAGE (HTML):</strong></p>
 
 <p><code>data-products=&quot;BT1002&quot;</code> - this means you want to include ONLY <code>BT1002</code></p>
+
+<p><code>data-products=&quot;BT1002,BT2002&quot;</code> - this means you want to include <code>BT1002</code> and <code>BT2002</code>.</p>
+
+<p><strong>FOR QUERY PARAM USAGE (HTTP):</strong> If using the Query Param implementation, separate each product into its own <code>products</code> parameter. See the example for use case.</p>
+
+<p><code>products=BT1002</code> - this means you want to include ONLY <code>BT1002</code></p>
+
+<p><code>products=BT1002&amp;products=BT2002</code> - this means you want to include <code>BT1002</code> and <code>BT2002</code>.</p>
 
 <table><thead>
 <tr>
@@ -467,19 +498,18 @@ Remember — a happy kitten is an authenticated kitten!
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-products=</span><span class="s">"BT1002"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?products=BT1002
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?products=BT1002
 </span></code></pre>
 <blockquote>
-<p>To restrict down to multiple product terms, just add another products parameter:</p>
+<p>To restrict down to multiple product terms:</p>
 </blockquote>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
-  </span><span class="na">data-products=</span><span class="s">"BT1002"</span>
-  <span class="na">data-products=</span><span class="s">"BT2002"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  </span><span class="na">data-products=</span><span class="s">"BT1002,BT2002"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?products=BT1002&amp;products=BT2002
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?products=BT1002&amp;products=BT2002
 </span></code></pre><h2 id='theme-modification'>Theme Modification</h2>
 <p>You can modify some of the colors in the widget</p>
 
@@ -508,9 +538,9 @@ Remember — a happy kitten is an authenticated kitten!
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script
   </span><span class="na">data-fontcolor=</span><span class="s">"FFF000"</span>
   <span class="na">data-bgcolor=</span><span class="s">"FF0000"</span>
-  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote.js"</span>
+  <span class="na">src=</span><span class="s">"https://embed.hellobestow.com/static/js/embedded-quote-iframe.js"</span>
 <span class="nt">/&gt;</span><span class="err">
-</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://embed.hellobestow.com?fontcolor=FFF000&amp;bgcolor=FF0000
+</span></code></pre><pre class="highlight http tab-http"><code><span class="err">https://partners.hellobestow.com/enroll/?fontcolor=FFF000&amp;bgcolor=FF0000
 </span></code></pre>
       </div>
       <div class="dark-box">
