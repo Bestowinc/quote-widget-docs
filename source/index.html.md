@@ -68,6 +68,7 @@ To access the API, you must include query parameters in the URL of your link (se
 ## Initialization Parameters
 
 The widget can be _initialized_ with a combination of parameters if you so choose. It is important to note that the widget will ignore parameters that are appended without refreshing the page. The following parameters are supported as query params or data attributes:
+One thing to note is that the default experience will use a 5 digit zip input to determine residence, but if the state param is provided it will use the state dropdown instead.
 
 | Parameter                                            | Format                                                          | Description                                                                                                                       |
 | ---------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -75,7 +76,8 @@ The widget can be _initialized_ with a combination of parameters if you so choos
 | date_of_birth, date_of_birth&#124;yyyymmdd, birthday | "dd/mm/yyyy", "yyyy-mm-dd", "yyyymmdd", "yyyymmdd 00:00:00 UTC" | Birthdate in any one of three supported parameter names and any one of four supported formats.                                    |
 | height                                               | integer                                                         | Height in inches (displayed on the form as 2 separate values, feet and inches).                                                   |
 | weight                                               | floating number, one decimal point                              | Weight in pounds (one decimal point allowed).                                                                                     |
-| state                                                | state initials (TX, MI, CA)                                     | Abbreviation of the state of residence.                                                                                           |
+| zip                                                  | 5-digit integer                                                 | 5 digit zipcode                                                                                                                   |
+| state                                                | state initials (TX, MI, CA)                                     | Abbreviation of the state of residence. *Note* if this is provided, the quote will use the state dropdown instead of the zip input|
 | coverage                                             | integer                                                         | The initial amount of coverage, in increments of 50,000 only.                                                                     |
 | mincoverage                                          | integer                                                         | The minimum amount of coverage the user can possibly select, in increments of 50,000 only. (See caveat in coverage section).      |
 | products                                             | product code                                                    | See "Products" section for details.                                                                                               |
